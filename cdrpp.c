@@ -8,6 +8,7 @@
 
 
 void substring(char s[], char sub[], int p, int l);
+void cpFileToRTCPath();
 
 int main(void) {
     char cwd[1024];
@@ -150,7 +151,7 @@ int main(void) {
     
     printf("Done.\n");
     
-    
+    cpFileToRTCPath();
     
     return 0;
 }
@@ -164,3 +165,11 @@ void substring(char s[], char sub[], int p, int l) {
    sub[c] = '\0';
 }
 
+void cpFileToRTCPath() {
+    printf("test:\n");
+    struct tm * timeinfo;
+    char datef[70];
+    time_t now = time(0);
+    timeinfo = localtime(&now);
+    strftime(datef, sizeof datef, "%Y%m%d", timeinfo);
+}
