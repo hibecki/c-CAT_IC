@@ -296,7 +296,8 @@ void copy(char *source, char *dest) {
 
 void uncompressFileSys(char *folder) {
     char command[100];
-    strcpy(command, "/bin/uncompress -r ");
+    //strcpy(command, "/bin/uncompress -r ");
+    strcpy(command, "/usr/bin/uncompress -r ");
     strcat(command, folder);
     system(command);
 }
