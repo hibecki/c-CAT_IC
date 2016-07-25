@@ -11,6 +11,8 @@
 void substring(char s[], char sub[], int p, int l);
 void uncompressFile(char *folder);
 void copy(char *source, char *dest);
+void uncompressFileSys(char *folder);
+void copySys(char *source, char *dest);
 void cpFileToRTCPath();
 
 int main(void) {
@@ -189,21 +191,27 @@ void cpFileToRTCPath() {
     
     char folderITSC4A[1024];
     strcpy(folderITSC4A, cwd);strcat(folderITSC4A, "/ITSC4A_");strcat(folderITSC4A, datef);
-    uncompressFile(folderITSC4A);sleep(ssleep);
-    strcat(folderITSC4A, "/.");
-    copy(folderITSC4A, folderRTC4A);
+    //uncompressFile(folderITSC4A);sleep(ssleep);
+    //strcat(folderITSC4A, "/.");
+    //copy(folderITSC4A, folderRTC4A);
+    uncompressFileSys(folderITSC4A);
+    copySys(folderITSC4A, folderRTC4A);
     
     char folderITSC4B[1024];
     strcpy(folderITSC4B, cwd);strcat(folderITSC4B, "/ITSC4B_");strcat(folderITSC4B, datef);
-    uncompressFile(folderITSC4B);sleep(ssleep);
-    strcat(folderITSC4B, "/.");
-    copy(folderITSC4B, folderRTC4B);
+    //uncompressFile(folderITSC4B);sleep(ssleep);
+    //strcat(folderITSC4B, "/.");
+    //copy(folderITSC4B, folderRTC4B);
+    uncompressFileSys(folderITSC4B);
+    copySys(folderITSC4B, folderRTC4B);
     
     char folderITSC5[1024];
     strcpy(folderITSC5, cwd);strcat(folderITSC5, "/ITSC5_");strcat(folderITSC5, datef);
-    uncompressFile(folderITSC5);sleep(ssleep);
-    strcat(folderITSC5, "/.");
-    copy(folderITSC5, folderRTC5);
+    //uncompressFile(folderITSC5);sleep(ssleep);
+    //strcat(folderITSC5, "/.");
+    //copy(folderITSC5, folderRTC5);
+    uncompressFileSys(folderITSC5);
+    copySys(folderITSC5, folderRTC5);
 }
 
 void uncompressFile(char *folder) {
@@ -284,4 +292,20 @@ void copy(char *source, char *dest) {
         {
         }
     }
+}
+
+void uncompressFileSys(char *folder) {
+    char command[100];
+    strcpy(command, "/bin/uncompress -r ");
+    strcat(command, folder);
+    system(command);
+}
+
+void copySys(char *source, char *dest) {
+    char command[100];
+    strcpy(command, "/bin/cp ");
+    strcat(command, source);
+    strcat(command, "/* ");
+    strcat(command, dest);
+    system(command);
 }
